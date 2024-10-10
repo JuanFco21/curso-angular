@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DbzService } from '../services/dbz.service';
 import { ListComponent } from '../components/list/list.component';
 import { AddCharacterComponent } from '../components/add-character/add-character.component';
+import { Character } from '../interfaces/character.interface';
 
 
 
@@ -16,5 +17,17 @@ import { AddCharacterComponent } from '../components/add-character/add-character
 })
 
 export class MainPageComponent {
-    constructor(public dbzService: DbzService) { }
+    constructor(private dbzService: DbzService) { }
+
+    get characters(): Character[] {
+        return [...this.dbzService.characters];
+    }
+
+    onDeleteCharacter(id: string): void {
+        this.dbzService.deleteCharacterById(id);
+    }
+
+    onNewCharacter(character: Character): void {
+        this.dbzService.addCharacter(character);
+    }
 }
