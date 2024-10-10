@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
   standalone: true, 
   selector: 'dbz-add-character',
   templateUrl: './add-character.component.html',
-  styleUrls: ['./add-character.component.css'],
   imports: [
     CommonModule,
     FormsModule

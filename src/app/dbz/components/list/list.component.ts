@@ -6,7 +6,6 @@ import { Character } from '../../interfaces/character.interface';
   standalone: true,
   selector: 'dbz-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
   imports: [
     CommonModule
   ]
@@ -14,9 +13,13 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
   @Input() characterList: Character[] = [];
 
-  @Output() onDelete: EventEmitter<number> = new EventEmitter();
+  @Output() onDelete: EventEmitter<string> = new EventEmitter();
 
-  onDeleteCharacter(index: number): void{
-    this.onDelete.emit(index);
+  deleteCharacterById(id?: string): void {
+    if (!id) return;
+
+    console.log({ id })
+
+    this.onDelete.emit(id);
   }
 }
